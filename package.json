@@ -1,0 +1,9 @@
+{
+  "title": "download",
+  "description": "News KSU",
+  "category": "ADROID APP RSS NEWS KSU",
+  "main": "./app/main.js",
+  "dependencies": {
+    "tabris": "1.9.0"
+  }
+}
