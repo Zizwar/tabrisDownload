@@ -8,7 +8,7 @@ var page = new tabris.Page({
     }).open();
 //
 var rez;
-  var db = window.sqlitePlugin.openDatabase({name: './ayat.db', location: 'default'});
+  var db = window.sqlitePlugin.openDatabase({name: './app/ayat.db', location: 'default'});
 //
      var text = new tabris.TextView({
             font: "bold 26px",
