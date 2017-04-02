@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.wino.download" version="1.1.0" android-versionCode="7" ios-CFBundleVersion="1.1.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>download</name>
+<widget id="com.wino.sqlite" version="1.1.0" android-versionCode="7" ios-CFBundleVersion="1.1.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>sqlite</name>
     <description>
-        download
+        sqlite
     </description>
     <author email="zizwar@gmail.com" href="https://wino.ws">
         Ibrahim BIDI
@@ -10,11 +10,9 @@
     <access origin="*" />
     <plugin name="cordova-plugin-dialogs" />
       <plugin name="cordova-plugin-vibration" />
-       <plugin name="cordova-plugin-x-socialsharing" />
-	    <plugin name="cordova-plugin-network-information" spec="1.2.1" />
 			<plugin name="cordova-plugin-file" />
 	<plugin name="cordova-plugin-file-transfer"/>
-		<plugin name="https://github.com/eclipsesource/cordova-plugin-downloader.git" />
+		<plugin name="cordova-sqlite-storage" />
 		
 
 		<platform name="android">
