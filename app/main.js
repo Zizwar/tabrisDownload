@@ -7,18 +7,10 @@ var page = new tabris.Page({
         background: "#000"
     }).open();
 //
-var Downloader = window.plugins.Downloader;
-var downloadSuccessCallback = function (folder) {
-  //folder: string where the file has been downloaded
-  window.plugins.toast.showShortCenter("bien downl ")
-};
-var downloadErrorCallback = function (error) {
-	window.plugins.toast.showShortCenter("#errrrrrr !!!!! no downl")
-  //error: string
-};
-
+var rez;
+  var db = window.sqlitePlugin.openDatabase({name: './ayat.db', location: 'default'});
 //
-     var text =    new tabris.TextView({
+     var text = new tabris.TextView({
             font: "bold 26px",
             textColor: "#fff",
           
@@ -32,17 +24,32 @@ var downloadErrorCallback = function (error) {
         }).on("tap", function(w, e) {
 		//	console.debug("fnc unzip file")
 				window.plugins.toast.showShortCenter("start")
-	//http://hijamaonline.ma/wino/test.zip
-			//http://hijamaonline.ma/wino/test.txt
-			//http://hijamaonline.ma/wino/test.mp3
-			Downloader.download({
-    url: "http://hijamaonline.ma/wino/test.zip", //url of ressource to download: string
-    path: "winoD" //path where to store ressource: string
-  },
-  downloadSuccessCallback,
-  downloadErrorCallback
-);
-			
+	  db.transaction(function(tx) {
+    tx.executeSql('SELECT *, text FROM ayat', [], function(tx, rs) {
+      console.log('Record count (expected to be 2): ' + rs.rows.item(0).text);
+	    rez.set("text","res="+rs.rows.item(0));
+	    window.plugins.toast.showShortCenter("res = "+rs.rows.item(0).text)
+	    
+    }, function(tx, error) {
+      window.plugins.toast.showShortCenter('SELECT error: ' + error.message);
+	    rez.set("text","errrrrrrrr");
+    });
+  });
+	    // var db = new sqlite3.Database();
+	   //  SELECT *, text FROM ayat
+	     
+        }).appendTo(page);
+rez = new tabris.TextView({
+            font: "bold 12px",
+            textColor: "#fff",
+          
+            centerX: 0,
+            layoutData: {
+                top: 100,
+                left: 20,
+             
+            },
+            text: "result here"
         }).appendTo(page);
         //
     //
